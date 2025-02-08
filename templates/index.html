@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Profesional</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome (Íconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            background: url('https://www.periodismoyambiente.com.mx/wp-content/uploads/2023/05/huella-digital-1024x563.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #fff;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background:
+                rgba(0, 0, 0, 0.712);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .timeline-content h5 {
+            color: #17a2b8;
+        }
+
+        /* Imagen de perfil */
+        .profile-img {
+            width: 180px;
+            /* Ajusta el tamaño según tu preferencia */
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .contact-button {
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .contact-button:hover {
+            background-color: #0056b3;
+        }
+
+        .offcanvas {
+            background-color: #222;
+            color: white;
+        }
+
+        .content-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de Navegación Offcanvas -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Roberth</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Menú</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre-mi">SobreMí</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Currículum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                        <li class="nav-item dropdown">
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        <img src="{{ url_for('static', filename='img/dario.jpg') }}" alt="Foto de perfil" class="profile-img">
+
+
+
+        <h1>{{ name }}</h1>
+        <p class="lead">Ingeniero de Sistemas | Desarrollador | Apasionado por la tecnología</p>
+
+        <!-- Redes Sociales -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/dario.burbano2" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/roberth-dario-burbano-romo-estudiante-77686133a" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/RoberthBurbano" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <!-- Sección Sobre Mí -->
+    <div id="sobre-mi" class="container mt-4">
+        <div class="content-box p-4 rounded shadow-lg">
+            <h2 class="text-center text-info"><i class="fas fa-user"></i> Sobre Mí</h2>
+            <p class="text-light text-justify mt-3">
+                Soy estudiante de <strong>octavo semestre</strong> en la <strong>Universidad CESMAG</strong> con
+                experiencia en
+                <span class="text-warning">gestión documental</span>, <span class="text-warning">atención al
+                    cliente</span> y
+                <span class="text-warning">desarrollo de soluciones tecnológicas</span>. He trabajado en la
+                <strong>Registraduría Nacional de la Nación</strong> y el <strong>Colegio Santa Teresita</strong>, donde
+                desarrollé
+                habilidades en <span class="text-success">administración de documentos</span> y
+                <span class="text-success">comunicación con usuarios</span>.
+                <br>
+                Además,<span class="text-warning"> me interesa el desarrollo de software, la automatización de procesos,
+                    el desarrollo de chatbots
+                    y el blockchain,</span> siempre buscando oportunidades para mejorar mis conocimientos y aplicar
+                soluciones
+                innovadoras a los desafíos tecnológicos actuales. Mi objetivo es seguir creciendo en el mundo del
+                desarrollo y aportar con mis habilidades a proyectos que generen impacto. esto implementalo en el codigo
+                que te pase
+
+            </p>
+            <!-- Botón para descargar CV -->
+            <div class="text-center mt-4">
+                <a href="static/files/cv.pdf" download class="btn btn-info">
+                    <i class="fas fa-download"></i> Descargar CV
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sección de Datos Personales e Intereses -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Datos Personales -->
+            <div class="col-md-6">
+                <div class="content-box p-4 rounded shadow-lg">
+                    <h2 class="text-info"><i class="fas fa-user"></i> Datos Personales</h2>
+                    <ul class="list-unstyled text-light mt-3">
+                        <li><strong>Cumpleaños:</strong> 30-04-1997</li>
+                        <li><strong>Teléfono:</strong> +57 3103815636</li>
+                        <li><strong>Email:</strong> burbanoroberth@gmail.com</li>
+                        <li><strong>Dirección:</strong> Aquine 3 Sector 3, Pasto, Colombia</li>
+                        <li><strong>Cargo:</strong> <span class="badge bg-primary">Programador Junior</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Intereses -->
+            <div class="col-md-6">
+                <div class="content-box p-4 rounded shadow-lg">
+                    <h2 class="text-info"><i class="fas fa-star"></i> Intereses</h2>
+                    <div class="d-flex flex-wrap gap-3 mt-3">
+                        <button class="btn btn-outline-info"><i class="fas fa-gamepad"></i> JUEGOS</button>
+                        <button class="btn btn-outline-info"><i class="fas fa-music"></i> MUSICA</button>
+                        <button class="btn btn-outline-info"><i class="fas fa-plane"></i> VIAJAR</button>
+                        <button class="btn btn-outline-info"><i class="fas fa-running"></i> DEPORTE</button>
+                        <button class="btn btn-outline-info"><i class="fas fa-book"></i> LIBROS</button>
+                        <button class="btn btn-outline-info"><i class="fas fa-car"></i> AUTOS</button>
+                        <button class="btn btn-outline-info"><i class="fas fa-camera"></i> FOTOS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Estudios -->
+    <div id="estudios" class="container mt-5">
+        <h2 class="text-center mb-4"><i class="fas fa-graduation-cap"></i> Estudios</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Bachillerato Grado 11 - COLEGIO ESTUDIAR</h5>
+                    <p>Pasto, Nariño | junio 2014 - julio 2015</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Técnico Laboral por Competencias en Sistemas - INSTITUTO TÉCNICO COLSUP</h5>
+                    <p>Pasto, Nariño | julio 2015 - julio 2017</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Seminario Marketing Digital - INSTITUTO TÉCNICO COLSUP</h5>
+                    <p>Pasto, Nariño | 8 horas de intensidad</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Ingeniería de Sistemas - UNIVERSIDAD CESMAG</h5>
+                    <p>Pasto, Nariño | agosto 2020 - enero 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sección Currículum -->
+    <div id="curriculum" class="container mt-5">
+        <h2 class="text-center mb-4"><i class="fas fa-file-alt"></i> Experiencia</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Desarrollador de ChatBots - Agencia de turismo</h5>
+                    <p>2023 - Actualidad</p>
+                    <p> • Creación e implementación de chatbots para atención al cliente y automatización de respuestas.
+                    </p>
+                    <p> • Desarrollo con tecnologías como Python, Node.js e integración con APIs.</p>
+                    <p> • Optimización del flujo conversacional y análisis de interacciones para mejorar la experiencia
+                        del usuario.</p>
+                </div>
+                <div class="timeline-content">
+                    <h5>Administrador de Base de Datos - Registraduría Nacional del Estado Civil</h5>
+                    <p>2015 - 2017</p>
+                    <p>• Más de un año de experiencia en gestión documental y atención al ciudadano.</p>
+                    <p>• Administración y organización de documentos oficiales, garantizando su accesibilidad y
+                        seguridad.</p>
+                    <p>• Comunicación directa con usuarios para la orientación en trámites administrativos.</p>
+                    <p>• Manejo y actualización de bases de datos en SQL para el registro y control de información
+                        oficial, optimizando la consulta y gestión de datos.</p>
+
+
+
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h5>Administrador de Base de Datos - Colegio Santa Teresita - Catambuco </h5>
+                    <p>2020 - 2021</p>
+                    <p>• Un año de experiencia en atención a padres de familia y gestión de información estudiantil..
+                    </p>
+                    <p>• Administración y digitalización de documentos utilizando MySQL, PostgreSQL y herramientas
+                        ofimáticas como Microsoft Office (Excel, Word) y Google Drive.</p>
+                    <p>• Apoyo en la coordinación de procesos internos del colegio, optimizando flujos de trabajo
+                        mediante la automatización con Python y SQL.</p>
+                </div>
+                <div class="timeline-content">
+                    <h5>Gestión de Clientes y Soporte Administrativo - Volcafé</h5>
+                    <p>2022</p>
+                    <p>• Un año de experiencia en contacto directo con clientes</p>
+                    <p>• Aplicación de comunicación asertiva para garantizar una atención eficiente y profesional.</p>
+                    <p>• Resolución de inquietudes y soporte en procesos administrativos y comerciales, optimizando la
+                        gestión de datos con MySQL, Excel y Google Workspace.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- Habilidades -->
+    <div id="habilidades" class="container mt-4">
+        <div class="content-box">
+            <h2 class="text-center mb-3"><i class="fas fa-code"></i> Habilidades</h2>
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <h5 class="text-primary"><i class="fas fa-laptop-code"></i> Lenguajes</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item bg-transparent text-white">Python, Java, JavaScript, TypeScrip,
+                            VisuaBasic, C++, PHP</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-success"><i class="fas fa-cogs"></i> Frameworks</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item bg-transparent text-white">Flask, Django, Spring Boot, React,ReactJs
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center mt-3">
+                <div class="col-md-6">
+                    <h5 class="text-warning"><i class="fas fa-database"></i> Bases de Datos</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item bg-transparent text-white">SQL, MySQL, PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-danger"><i class="fas fa-code-branch"></i> Herramientas</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item bg-transparent text-white">Git, GitHub, GitBash</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- portafolio -->
+
+    <div id="portfolio" class="container mt-5">
+        <h2 class="text-center mb-4"><i class="fas fa-briefcase"></i> Portafolio</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-dark text-white portfolio-item">
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Proyecto 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Proyecto 1</h5>
+                        <p class="card-text">Aplicación web de gestión de clientes con Flask.</p>
+                        <a href="#" class="btn btn-info"><i class="fas fa-link"></i> Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-dark text-white portfolio-item">
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Proyecto 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Proyecto 2</h5>
+                        <p class="card-text">Sistema de control de inventarios en Django.</p>
+                        <a href="#" class="btn btn-info"><i class="fas fa-link"></i> Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-dark text-white portfolio-item">
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Proyecto 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Proyecto 3</h5>
+                        <p class="card-text">Dashboard interactivo con React y Chart.js.</p>
+                        <a href="#" class="btn btn-info"><i class="fas fa-link"></i> Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contacto -->
+    <div id="contacto" class="container mt-4">
+        <h2>Contacto</h2>
+        <p>Contactate conmigo:</p>
+        <a href="mailto:tuemail@ejemplo.com" class="contact-button">Enviar Correo</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
