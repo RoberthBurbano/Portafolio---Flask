@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask import send_from_directory
 
 app = Flask(__name__)
 
@@ -27,6 +28,13 @@ def index():
                            intereses=intereses, 
                            bio="Sobre mí", 
                            profile_pic="static/img/dario.jpg")
+
+
+@app.route('/download/<path:filename>')
+def download_file(filename):
+    return send_from_directory('static/files', filename, as_attachment=True)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
