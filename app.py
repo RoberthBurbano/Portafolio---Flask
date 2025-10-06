@@ -1,10 +1,12 @@
-from flask import Flask, render_template
-from flask import Flask, send_from_directory,url_for
+import os
+from flask import Flask, render_template, send_from_directory
 
-app = Flask(__name__)
+# Inicializar la aplicación Flask
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 @app.route('/')
 def index():
+    # Datos personales
     datos_personales = {
         "nombre": "Roberth Dario Burbano Romo",
         "edad": 27,
@@ -13,6 +15,7 @@ def index():
         "telefono": "+57 3203815636"
     }
 
+    # Lista de intereses
     intereses = [
         "Desarrollo de Software",
         "Inteligencia Artificial",
@@ -22,20 +25,24 @@ def index():
         "Análisis de Datos"
     ]
 
-    return render_template('index.html', 
-                           name=datos_personales["nombre"], 
-                           datos_personales=datos_personales, 
-                           intereses=intereses, 
-                           bio="Sobre mí", 
-                           profile_pic="static/img/dario.jpg")
+    # Renderizar el template con los datos
+    return render_template(
+        'index.html',
+        name=datos_personales["nombre"],
+        datos_personales=datos_personales,
+        intereses=intereses,
+        bio="Sobre mí",
+        profile_pic="img/dario.jpg"  # ya no pongas "static/" aquí
+    )
 
-
-@app.route('/download/<filename>')
+# Ruta para descargar archivos del CV
+@app.route('/download/<path:filename>')
 def download_file(filename):
-    return send_from_directory('static/files', filename)
+    directory = os.path.join(app.root_path, 'static', 'files')
+    return send_from_directory(directory, filename, as_attachment=True)
 
-
-
+# Punto de entrada de la app
 if __name__ == '__main__':
-    app.run(debug=True)
-app.run(debug=True)
+    # Render usa una variable de entorno llamada PORT
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
